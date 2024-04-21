@@ -5,7 +5,9 @@ namespace Attia\Support;
 use ReflectionClass;
 use ReflectionMethod;
 use Illuminate\Testing\TestResponse;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\ServiceProvider;
+use Attia\Support\Database\QueryBuilderMixin;
 use Attia\Support\Testing\TestResponseViewMixin;
 
 class SupportBaseServiceProvider extends ServiceProvider
@@ -15,6 +17,7 @@ class SupportBaseServiceProvider extends ServiceProvider
         if (class_exists(TestResponse::class)) {
             $this->registerMixin(TestResponse::class, TestResponseViewMixin::class);
         }
+        $this->registerMixin(Builder::class, QueryBuilderMixin::class);
     }
 
     protected function registerMixin(string $target, $mixin)
