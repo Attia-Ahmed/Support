@@ -31,11 +31,16 @@
       "Attia\\Support\\Tests\\": "tests/"
     }
   },
+  "config": {
+    "sort-packages": true
+  },
   "extra": {
     "laravel": {
       "providers": [
         "Attia\\Support\\SupportBaseServiceProvider"
       ]
     }
-  }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
