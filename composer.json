@@ -2,6 +2,13 @@
   "name": "attia/support",
   "description": "Laravel Helpers.",
   "license": "MIT",
+  "keywords": [
+    "attia",
+    "support",
+    "helpers",
+    "laravel-helpers",
+    "laravel"
+  ],
   "authors": [
     {
       "name": "Attia Ahmed",
