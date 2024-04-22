@@ -7,7 +7,6 @@ use Attia\Support\Tests\TestCase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\Grammars\MySqlGrammar;
 use Illuminate\Database\Query\Grammars\SQLiteGrammar;
 
 class QueryBuilderMixinTest extends TestCase
@@ -84,6 +83,16 @@ class QueryBuilderMixinTest extends TestCase
         $builder->whereOrNull('first_name', function ($query) {
             $query->where('last_name', 'test');
         }, 'test');
+    }
+
+    public function testOrderByValues()
+    {
+        $builder = $this->getBuilder();
+        $builder->orderByValues('first_name', [3, null, 1]);
+        $this->assertEquals(
+            'select * from "table" order by first_name = ? desc, first_name is ? desc, first_name = ? desc',
+            $builder->toSql());
+        $this->assertEquals([3, null, 1], $builder->getBindings());
     }
 
     private function getBuilder(): Builder

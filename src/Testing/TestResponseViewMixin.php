@@ -9,7 +9,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Foundation\Testing\TestCase;
 use Illuminate\Testing\AssertableJsonString;
 
-class TestResponseViewMixin
+final class TestResponseViewMixin
 {
     public function __construct(protected TestResponse $response)
     {
